@@ -1,0 +1,6 @@
+# Company data: fill these in locally; keep them out of any shared repository.
+references/diario.md
+tmp/
+__pycache__/
+*.env
+.DS_Store

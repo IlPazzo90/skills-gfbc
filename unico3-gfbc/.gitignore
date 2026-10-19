@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.venv/
+*.egg-info/
+
+# Local work: customer data stays on the machine, never in git
+ricognizione/
+diario/
+references/diario.md
+tmp/
+logs/
+dati/
+.env
+*.env
+.DS_Store

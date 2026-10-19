@@ -1,0 +1,13 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "unico3-gfbc"
+version = "0.1.0"
+description = "Unicò 3 (Futura SI) automation skill for Claude Code"
+requires-python = ">=3.9"
+dependencies = ["websocket-client"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
