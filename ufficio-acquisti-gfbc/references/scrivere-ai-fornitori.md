@@ -1,7 +1,7 @@
 # Scrivere ai fornitori
 
 Tono diretto e cortese, frasi brevi. «Ciao <Nome>» con i referenti che ci conoscono (annotali in
-`fornitori.md`), «Buongiorno» con gli uffici. Il corpo chiude con «Grazie,» una volta sola: la firma
+`~/.config/ufficio-acquisti/fornitori.md`), «Buongiorno» con gli uffici. Il corpo chiude con «Grazie,» una volta sola: la firma
 non lo ripete. La firma la aggiunge `posta.py` a **ogni** mail, anche agli inoltri (`inoltra`).
 Mai inoltrare con l'endpoint Graph `forward` diretto: esce senza firma. Il corpo è HTML semplice,
 con `<p>` e `<ul>`.

@@ -23,8 +23,8 @@ controlla la Posta inviata.
 
 ## Unicò
 
-- Skill `unico3-gfbc`: agenda, attività, ticket (`references/crm-ticket.md`), articoli e listini
-  (`references/magazzino.md`), preventivi NET (`references/flussi/preventivo-net.md`).
+- Skill `unico3-gfbc`: agenda, attività, ticket (`unico3-gfbc/references/crm-ticket.md`), articoli e listini
+  (`unico3-gfbc/references/magazzino.md`), preventivi NET (`unico3-gfbc/references/flussi/preventivo-net.md`).
 - Webservice in sola lettura per verificare articoli e prezzi: `/magazzino/articoli/codice/{c}`.
 - Nell'agenda le attività ufficio si filtrano scrivendo il nome nel campo sopra la griglia; la
   finestra di date si allarga con `AttivitaInizio` nella query.

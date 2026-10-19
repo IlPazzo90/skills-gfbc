@@ -24,14 +24,25 @@ FIRMA_MARK = "<!--firma-ua-->"
 
 
 def _env():
+    # Help must work before the mailbox is configured: the usage lives in the docstring.
+    if __name__ == "__main__" and {"-h", "--help"} & set(sys.argv[1:]):
+        print(__doc__)
+        raise SystemExit(0)
     p = os.path.expanduser(os.environ.get("UFFICIO_ACQUISTI_ENV", "~/.config/ufficio-acquisti/graph.env"))
     if not os.path.exists(p):
         raise SystemExit(f"manca la configurazione {p}: vedi l'intestazione di questo file")
     e = {}
-    for line in open(p):
+    try:
+        righe = open(p).read().splitlines()
+    except OSError as err:
+        raise SystemExit(f"non riesco a leggere la configurazione {p}: {err.strerror}")
+    for line in righe:
         if "=" in line and not line.lstrip().startswith("#"):
             k, v = line.strip().split("=", 1)
             e[k.strip()] = v.strip()
+    mancano = [k for k in ("GRAPH_TENANT", "GRAPH_CLIENT", "GRAPH_SECRET", "DOMINIO") if not e.get(k)]
+    if mancano:
+        raise SystemExit(f"configurazione {p} incompleta, mancano: {', '.join(mancano)}")
     return e
 
 
@@ -42,7 +53,10 @@ MAGAZZINO = CFG["MAGAZZINO"] + DOM if CFG.get("MAGAZZINO") else ""
 CASELLE = CFG.get("CASELLE", CFG.get("MITTENTE", "acquisti"))
 _firma = os.path.expanduser(CFG.get("FIRMA", ""))
 # Every outgoing mail carries the company signature, forwards included.
-FIRMA = FIRMA_MARK + (open(_firma).read() if _firma and os.path.exists(_firma) else "")
+try:
+    FIRMA = FIRMA_MARK + (open(_firma).read() if _firma and os.path.exists(_firma) else "")
+except OSError as err:
+    raise SystemExit(f"non riesco a leggere la firma {_firma}: {err.strerror}")
 
 
 def _token():

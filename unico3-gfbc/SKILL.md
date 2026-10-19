@@ -22,6 +22,14 @@ Unicò3 "classico" è una RemoteApp Windows e da qui non è raggiungibile. Solo 
 
 ## Prima di qualunque cosa, in quest'ordine
 
+**0. Leggi `~/.config/unico3/organizzazione.md`.** È quello che la skill sa della *tua*
+azienda: aziende, ruoli e, per ogni azienda censita, catena del CRM, sigle, magazzini. Della
+configurazione usa solo la sezione dell'azienda letta dalla URL (passo 1). Se non esiste o ha ancora i
+segnaposto `<...>`, è il primo avvio: proponi di fare il punto con
+`references/primo-avvio.md` (solo lettura, una volta). Finché non c'è, sigle, tipologie e
+nomi citati nei `references/` sono **esempi dell'azienda d'origine**, non la tua
+configurazione: dillo quando li usi.
+
 **1. Leggi l'azienda dalla URL e dichiarala in chat.**
 
 ```
@@ -66,7 +74,9 @@ parte della guida descrive il terminale Windows, che da qui non parte.
 
 ## Come si guida
 
-Estensione Chrome (`mcp__claude-in-chrome__*`). `javascript_tool` **funziona** — se
+Estensione Chrome (`mcp__claude-in-chrome__*`, Claude Code). In Codex serve uno strumento
+equivalente che piloti un browser con la sessione di Unicò aperta; se non c'è, dillo: la skill
+resta consultazione, non guida. `javascript_tool` **funziona** — se
 torna `[BLOCKED: ...]` è il filtro di sicurezza sul contenuto restituito, non lo
 strumento: chiedi i campi per nome invece di riversare strutture intere.
 
@@ -150,11 +160,15 @@ sta in **`references/apprendimento.md`**. Tre cose da qui:
 3. **Un diario delle sessioni, se lo vuoi, è un file locale non versionato**: può
    nominare clienti e importi veri e non va su GitHub.
 
-**Rito di chiusura sessione**, dalla cartella della skill:
+**Quello che riguarda la tua azienda** (una sigla, un ruolo, un'abitudine) va in
+`~/.config/unico3/organizzazione.md`, mai nei `references/`: quelli sono del repository e
+descrivono Unicò, non la tua configurazione.
+
+**Rito di chiusura sessione**, dalla cartella della skill (`unico3-gfbc/`):
 
 ```bash
-python3 -m u3.fatti     # nessun file contraddice il registro — non si salta
-python3 -m pytest -q    # guardrail e helper
+python3 -m u3.fatti            # nessun file contraddice il registro — non si salta
+.venv/bin/python -m pytest -q  # guardrail e helper (venv del README; o python3 se pytest è globale)
 ```
 
 `u3/fatti.py` è la rete che il 04/09/2026 mancava, quando tre numeri smentiti erano
@@ -171,6 +185,8 @@ consistente.
 
 | File | Quando |
 |---|---|
+| `~/.config/unico3/organizzazione.md` | sempre, prima di agire: la tua azienda |
+| `references/primo-avvio.md` | la prima volta, e quando cambiano release, persone o configurazione |
 | `references/guardrail.md` | sempre, prima di agire |
 | `references/mappa-web.md` | per sapere dove sta una cosa e cosa è già stato verificato |
 | `references/dominio.md` | per capire il significato di quello che si legge o scrive |

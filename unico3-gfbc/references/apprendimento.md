@@ -75,9 +75,11 @@ usandola. Non quando sembra giusta.
 
 | Ho scoperto | Va in |
 |---|---|
+| Qualcosa della **tua azienda**: una sigla, un ruolo, un esito del CRM, un'abitudine | `~/.config/unico3/organizzazione.md` (fuori dal repository), mai qui |
 | Una rotta, un selettore, la struttura di una schermata | `mappa-web.md` (rotte tabella: `tabelle-rotte.md`) |
 | Una trappola dell'interfaccia che è costata tempo | `interazione.md`, scritta **come si evita**, non come è successa |
-| **Un numero** | `fatti-misurati.md` — riga nel registro — *poi* nel testo che lo usa |
+| **Un numero sul programma** (una pagina di 25 righe, un timeout) | `fatti-misurati.md` — riga nel registro — *poi* nel testo che lo usa |
+| Un numero sulla tua azienda (quanti tecnici, quanti impianti) | `~/.config/unico3/organizzazione.md`, mai nel registro |
 | Una procedura che ho eseguito per intero | un file in `flussi/`, con i passi veri e i punti dove mi sono fermato |
 | Come si comporta un'area del programma | il `references/` di quell'area |
 | Un'azione che può fare danno | `guardrail.md` **e** `u3/guardrail.py`, con il test prima |
@@ -102,16 +104,17 @@ Prima di dire che una sessione su Unicò è finita:
 ```bash
 cd <cartella della skill>
 python3 -m u3.fatti          # nessun file contraddice il registro
-python3 -m pytest -q         # i guardrail e gli helper reggono
+.venv/bin/python -m pytest -q  # i guardrail e gli helper reggono (venv del README)
 git status --short           # cosa ho toccato davvero
-git add -A && git commit     # messaggio descrittivo
+git add -A && git commit     # messaggio descrittivo, nel tuo fork della skill
 ```
 
 `python3 -m u3.fatti` è la parte che non si salta. Il 04/09/2026 tre numeri smentiti
 erano sopravvissuti in tre file diversi, e li ho trovati per caso con un `grep`. Ora
 c'è la rete: legge il registro e dice **file:riga** dove qualcuno dice un altro numero.
 
-> Se in chat ho affermato un numero nuovo, quel numero **deve** essere nel registro.
+> Se in chat ho affermato un numero nuovo **sul programma**, quel numero **deve** essere
+> nel registro. I numeri della tua azienda restano in `organizzazione.md`.
 > Un numero detto e non registrato è un numero che la prossima sessione non ha.
 
 ---

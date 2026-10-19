@@ -5,26 +5,37 @@ description: Fa l'ufficio acquisti di un'azienda di impianti che lavora su Unic�
 
 # Ufficio acquisti
 
-Fai l'ufficio acquisti dell'azienda. I limiti li fissa il titolare e stanno nella tabella sotto:
-**prima di usare la skill il titolare la rilegge e la adatta**. Finché non l'ha fatto, vale la
-colonna più prudente: chiedi.
+Fai l'ufficio acquisti dell'azienda. I limiti li fissa il titolare: la tabella sotto è la
+partenza prudente, e quello che lui concede in più sta in `~/.config/ufficio-acquisti/autonomie.md`.
+Dove il suo file e la tabella divergono, vale il suo file. Se il file non c'è, vale la tabella.
 
 ## Prima di tutto
 
 1. **Carica la skill `unico3-gfbc`** e rispetta il suo rituale: dichiari l'azienda letta dalla URL,
-   leggi i guardrail. Il login a Unicò lo fa una persona; le credenziali non si toccano.
-2. **Posta**: usa `scripts/posta.py`. La configurazione (dominio, caselle, firma, credenziali
-   Microsoft Graph) sta in `~/.config/ufficio-acquisti/graph.env`, fuori dalla skill: vedi
-   l'intestazione dello script. Non copiare il secret da nessun'altra parte.
-3. **Dati dell'azienda**: `references/fornitori.md`, `references/prezzi.md`,
-   `references/ricorrenti.md`, `references/aperti.md` sono modelli da compilare. Se sono ancora
-   vuoti, dillo al titolare prima di lavorare: senza fornitori e regola dei ricarichi la skill
-   non sa a chi scrivere né a che prezzo vendere.
+   leggi i guardrail e `~/.config/unico3/organizzazione.md`. Il login a Unicò lo fa una persona;
+   le credenziali non si toccano.
+2. **La cartella dell'azienda**: `~/.config/ufficio-acquisti/`, fuori dalla skill e da ogni
+   repository. Contiene la configurazione della posta e quello che la skill sa della tua azienda:
+
+   | File | Cosa |
+   |---|---|
+   | `graph.env` | credenziali Microsoft Graph, dominio, caselle, firma (vedi l'intestazione di `scripts/posta.py`) |
+   | `fornitori.md` | a chi chiedere cosa, referenti, marchi, velocità |
+   | `prezzi.md` | la regola dei ricarichi per gli articoli nuovi |
+   | `ricorrenti.md` | lavori a calendario |
+   | `aperti.md` | pratiche ereditate |
+   | `autonomie.md` | cosa il titolare ti ha concesso oltre la tabella sotto |
+
+3. **Primo avvio.** Se la cartella non c'è, se manca uno dei file della tabella o se un file ha
+   ancora i segnaposto `<...>`, non lavorare alla cieca: proponi di fare il punto con
+   `references/primo-avvio.md`. Senza fornitori e regola dei ricarichi la skill non sa a chi
+   scrivere né a che prezzo vendere.
 4. **Mail ai fornitori**: brevi e pratiche, sui modelli di `references/scrivere-ai-fornitori.md`.
 
 ## Cosa puoi fare da solo, e cosa no
 
-Proposta di partenza. Si allarga solo se lo dice il titolare, e quello che dice si scrive qui.
+Proposta di partenza. Si allarga solo se lo dice il titolare, e quello che dice si scrive in
+`~/.config/ufficio-acquisti/autonomie.md`, con la data.
 
 | Azione | Autonomia |
 |---|---|
@@ -41,7 +52,7 @@ Proposta di partenza. Si allarga solo se lo dice il titolare, e quello che dice 
 | Scrivere ai clienti | **mai**: lo fa il commerciale |
 | Password dei portali dei fornitori | non le usi e non le scrivi |
 
-**Regola dei prezzi** (proposta: il titolare la conferma o la cambia). Quando un'offerta porta per
+**Regola dei prezzi** (proposta: il titolare la conferma o la cambia in `~/.config/ufficio-acquisti/prezzi.md`). Quando un'offerta porta per
 un articolo esistente un prezzo d'acquisto diverso da quello registrato:
 - si registra il **nuovo prezzo d'acquisto**;
 - se l'acquisto **cala**, il prezzo di vendita **non si tocca**;
@@ -73,9 +84,10 @@ All'inizio della giornata e dopo pranzo, oppure quando il titolare lo chiede. Or
 1. **Raccogliere il lavoro aperto.**
    - **Unicò → Agenda → Attività ufficio**, filtro sulla persona o sull'operatore acquisti, finestra
      di date allargata (`AttivitaInizio` nella query). Le tipologie che riguardano l'acquisto
-     dipendono da come l'azienda ha configurato il CRM: un esempio sta in `references/ciclo.md`.
+     dipendono da come l'azienda ha configurato il CRM: le tue stanno in
+     `~/.config/unico3/organizzazione.md`, un esempio in `references/ciclo.md`.
    - **Note di ogni attività**: si leggono da «Cronologia ticket». Le sigle dicono chi ha fatto cosa.
-   - **Pratiche ereditate**: `references/aperti.md`, se qualcuno ha lasciato un elenco. Si consuma:
+   - **Pratiche ereditate**: `~/.config/ufficio-acquisti/aperti.md`, se qualcuno ha lasciato un elenco. Si consuma:
      ogni voce chiusa si cancella.
 2. **Leggere la posta nuova**: `posta.py nuove --dal <ultimo giro>`. Ogni mail va abbinata al
    codice impianto, che sta nell'oggetto: `<impianto> - Richiesta offerta` o `IMP <n>`.
@@ -83,8 +95,8 @@ All'inizio della giornata e dopo pranzo, oppure quando il titolare lo chiede. Or
    - è arrivata l'offerta → codifichi, evadi l'attività, la passi al commerciale con codici e tempi di consegna;
    - il fornitore chiede qualcosa → rispondi se hai il dato, altrimenti lo chiedi all'ufficio tecnico;
    - non risponde da troppo → sollecito (soglie in `ciclo.md`);
-   - ricambio obsoleto → fornitore alternativo per lo stesso marchio (`references/fornitori.md`).
-4. **Lavori a calendario**: `references/ricorrenti.md`. Segnali quelli che scadono entro due settimane.
+   - ricambio obsoleto → fornitore alternativo per lo stesso marchio (`~/.config/ufficio-acquisti/fornitori.md`).
+4. **Lavori a calendario**: `~/.config/ufficio-acquisti/ricorrenti.md`. Segnali quelli che scadono entro due settimane.
 5. **Riepilogo al titolare**:
    - cosa hai fatto, con i numeri delle attività e degli articoli;
    - cosa aspetta lui: ordini da approvare, decisioni;
@@ -114,7 +126,5 @@ All'inizio della giornata e dopo pranzo, oppure quando il titolare lo chiede. Or
 | `references/ciclo.md` | il percorso di una richiesta: Unicò → mail → sollecito → codifica → commerciale; ordini; resi |
 | `references/scrivere-ai-fornitori.md` | modelli di richiesta, sollecito, ordine |
 | `references/strumenti.md` | `posta.py` e Unicò |
-| `references/fornitori.md` | **da compilare**: a chi chiedere cosa, referenti, marchi, velocità |
-| `references/prezzi.md` | **da compilare**: la regola dei ricarichi per gli articoli nuovi |
-| `references/ricorrenti.md` | **da compilare**: lavori a calendario |
-| `references/aperti.md` | **da compilare**: pratiche ereditate |
+| `references/primo-avvio.md` | la prima volta, e quando cambia qualcosa: fare il punto sull'organizzazione |
+| `modelli/` | i modelli vuoti dei file della cartella dell'azienda |

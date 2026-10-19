@@ -1,4 +1,4 @@
-# Company data: fill these in locally; keep them out of any shared repository.
+# Company data lives in ~/.config/ufficio-acquisti/, never here.
 references/diario.md
 tmp/
 __pycache__/

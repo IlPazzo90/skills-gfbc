@@ -1,8 +1,9 @@
 # Il ciclo di una richiesta
 
 Le tipologie di attività e gli esiti qui sotto sono **un esempio reale** di CRM Unicò configurato
-per un'azienda di assistenza impianti. I nomi nella tua installazione possono essere diversi:
-la prima volta che li incontri, leggili nel dialogo Evadi e correggi questo file.
+per un'azienda di assistenza impianti, non la tua. La tua catena sta in
+`~/.config/unico3/organizzazione.md`, nella sezione dell'azienda su cui lavori, scritta al primo avvio
+(`references/primo-avvio.md`): dove i nomi divergono, vale quella.
 
 ## 1. Come nasce: la catena su Unicò
 
@@ -34,7 +35,7 @@ codice, acquisto, vendita e disponibilità.
 
 ## 2. La richiesta al fornitore
 
-- **Scelta del fornitore:** uno specializzato per marchio, da `fornitori.md`. Ne interpelli due solo
+- **Scelta del fornitore:** uno specializzato per marchio, da `~/.config/ufficio-acquisti/fornitori.md`. Ne interpelli due solo
   se il prezzo è alto, la disponibilità è dubbia o il primo ha già detto «obsoleto».
 - **Oggetto:** `<impianto> - Richiesta offerta`. Il testo segue `scrivere-ai-fornitori.md`.
 - **Foto:** di targa e ricambio, dagli allegati del ticket Unicò o da dove l'azienda le raccoglie.
@@ -54,7 +55,7 @@ Soglie di partenza, da tarare sui tempi dei tuoi fornitori:
 | Normale | dopo **6 giorni lavorativi** | secondo dopo 6; dopo il secondo senza risposta, fornitore alternativo |
 | Il fornitore ci ha fatto una domanda | **nessun sollecito**: la palla è nostra | rispondi o chiedi il dato all'ufficio tecnico |
 
-I fornitori lenti si annotano in `fornitori.md`: a loro il sollecito va a tutti gli indirizzi conosciuti.
+I fornitori lenti si annotano in `~/.config/ufficio-acquisti/fornitori.md`: a loro il sollecito va a tutti gli indirizzi conosciuti.
 
 ## 4. L'offerta arriva → codifica → commerciale
 
@@ -67,7 +68,7 @@ I fornitori lenti si annotano in `fornitori.md`: a loro il sollecito va a tutti 
    la **regola dei prezzi** di `SKILL.md`. Ogni altra modifica a un articolo esistente richiede l'ok.
 3. **Crea l'articolo** se non c'è, con la procedura di `unico3-gfbc/references/magazzino.md`:
    codice del produttore se è certo, altrimenti quello del fornitore; listino del fornitore con il
-   **codice per ordine**; descrizione in MAIUSCOLO. Prezzo di vendita: `references/prezzi.md`.
+   **codice per ordine**; descrizione in MAIUSCOLO. Prezzo di vendita: `~/.config/ufficio-acquisti/prezzi.md`.
    Quando la regola non copre il caso, nel riepilogo scrivi che il prezzo va confermato.
 4. **Verifica** via webservice che articolo e listino esistano con i valori giusti.
 5. **Evadi RICHIESTA OFFERTA FORNITORE** con l'esito che passa a ELABORAZIONE PREVENTIVO, assegnata
