@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-10-20
+
+- Nuova skill `testo-umano-gfbc`: sette scelte di struttura per testi da far leggere a persone, dal paper StoryScope (arXiv 2604.03136), con contro-impronte per Claude e GPT, sintesi completa del paper in `references/storyscope.md` e blocco per i system prompt delle app in `references/blocco-runtime.md`. Ripulita dai riferimenti a progetti e documenti interni.
+- README: descrizione e installazione della terza skill.
+- Verifiche: gitleaks; ricerca di nomi interni, percorsi personali e dati di documenti reali nei file nuovi; frontmatter letto come skill; revisione Codex sui dati da pubblicare, due finding minori corretti.
+
 ## 2026-10-19 (secondo intervento)
 
 - Primo avvio: `unico3-gfbc/references/primo-avvio.md` e `ufficio-acquisti-gfbc/references/primo-avvio.md` guidano il nuovo utente a fare il punto sulla sua organizzazione (aziende, ruoli, catena del CRM, tabelle di configurazione, fornitori, prezzi, autonomie). Quello che la skill impara della singola azienda va in `~/.config/unico3/organizzazione.md` e `~/.config/ufficio-acquisti/`, fuori dal repository.

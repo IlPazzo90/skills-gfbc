@@ -1,7 +1,8 @@
 # skills-gfbc
 
-Due skill per Claude Code (e Codex) pensate per chi usa **Unicò 3** di Futura SI, il gestionale
-per aziende di installazione e assistenza impianti.
+Skill per Claude Code (e Codex). Le prime due sono pensate per chi usa **Unicò 3** di Futura SI,
+il gestionale per aziende di installazione e assistenza impianti; la terza vale per chiunque
+faccia scrivere testi a un modello.
 
 - **`unico3-gfbc`**: guida Unicò Web dentro il tuo Chrome tramite l'estensione Claude in Chrome.
   Legge impianti, scadenze, interventi, contratti, magazzino. Scrive (articoli, piani di
@@ -9,8 +10,15 @@ per aziende di installazione e assistenza impianti.
 - **`ufficio-acquisti-gfbc`**: fa il giro dell'ufficio acquisti. Legge le richieste d'offerta su
   Unicò, scrive ai fornitori da una casella Microsoft 365, sollecita, codifica le offerte e passa il
   lavoro al commerciale. Senza `unico3-gfbc` non funziona.
+- **`testo-umano-gfbc`**: le scelte di struttura da fare *prima* di scrivere un testo che una
+  persona leggerà (articolo, post, mail, relazione), ricavate dal paper StoryScope
+  ([arXiv 2604.03136](https://arxiv.org/abs/2604.03136)): come si chiude, come si nomina
+  un'emozione, cosa si lascia aperto, chi si nomina. In `testo-umano-gfbc/references/blocco-runtime.md` c'è la
+  versione da incollare nei system prompt delle app che generano testo per i clienti. Non
+  dipende da Unicò. Dopo la stesura si abbina bene a
+  [humanizer](https://github.com/blader/humanizer), che pulisce la superficie.
 
-Sono nate in un'azienda di impianti e sono state ripulite dai suoi dati: clienti, fornitori,
+Le skill di Unicò sono nate in un'azienda di impianti e sono state ripulite dai suoi dati: clienti, fornitori,
 prezzi, codici e persone non ci sono più. Restano le procedure e le trappole del gestionale, cioè
 quello che costa settimane scoprire da soli.
 
@@ -27,7 +35,10 @@ cd skills-gfbc
 mkdir -p ~/.claude/skills
 ln -s "$PWD/unico3-gfbc" ~/.claude/skills/unico3-gfbc
 ln -s "$PWD/ufficio-acquisti-gfbc" ~/.claude/skills/ufficio-acquisti-gfbc
+ln -s "$PWD/testo-umano-gfbc" ~/.claude/skills/testo-umano-gfbc
 ```
+
+Python, Chrome e Microsoft 365 servono solo alle skill di Unicò: `testo-umano-gfbc` è solo testo.
 
 Per Codex il percorso è `~/.agents/skills/` al posto di `~/.claude/skills/`. Attenzione: per
 guidare Unicò `unico3-gfbc` usa gli strumenti dell'estensione Claude in Chrome, che esistono in
